@@ -1,66 +1,69 @@
-import React, { useState } from "react";
-import { View, TextInput, Text, TouchableOpacity, Alert, Pressable } from "react-native";
+import React, { useState } from 'react';
+import { Modal, Text, Pressable, View, TextInput, Alert } from 'react-native';
 
-import styles from "../form/style";
+import styles from './style';
 
 const Cadastro = () => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [email, setEmail] = useState(null);
+    const [email, setemail] = useState(null);
 
     function closeModalAndEnviaEmail(){
         if(email != null){
-            setModalVisible(modalVisible);
+            setModalVisible(!modalVisible);
             emailEnviadoComSucesso()
-            setEmail(null)
+            setemail(null)
         } else {
-            createAlert
+            createAlert()
         }
     }
+
     const emailEnviadoComSucesso = () => Alert.alert(
         "Sucesso!",
-        "Você recebera um e-mail para recuperação de senha"
-    );
-    const createAlert = () => Alert.alert(
-        "Oops!",
-        "É necessario preencher o campo com seu e-mail!"
+        "Você recebera um e-mail para recuperação de senha!"
     );
 
-    return(
+    const createAlert = () => Alert.alert(
+        "Oops!",
+        "É necessário preencher o campo com seu e-mail!"
+    );
+
+    return (
         <View style={styles.centeredView}>
-            <modal
-                animatonType= "slide"
+            <Modal
+                animationType="slide"
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
                     setModalVisible(!modalVisible);
                 }}>
                 <View style={styles.centeredView}>
-                    <View style={styles.modalVisible}>
-                        <text style={styles.modalText}>
-                            Olâ querido aluno.
-                            Seu trabalho vai ser criar Modal para recuperar a senha!
-                            LEMBRE! Você vai ter abrir esse modal dentro da tela de long.
-                        </text>
+                    <View style={styles.modalView}>
+                        <Text style={styles.modalText}>
+                            Olá querido aluno.
+                            Seu trabalho vai ser criar esse Modal para recuperar a senha!
+                            LEMBRE! Você vai ter abrir esse modal dentro da tela de login.
+                        </Text>
                         <TextInput
-                            style={[styles.button, styles.buttonClose]}
-                            onChangeText={setEmail}
+                            style={styles.inputEmail}
+                            onChangeText={setemail}
                             value={email}
                             placeholder="digite seu e-mail"
                         />
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
-                            onPress={() => closeModalAndEnviaEmail}>
-                                <Text style={styles.textStyle}>Enviar</Text>
+                            onPress={() => closeModalAndEnviaEmail()}>
+                            <Text style={styles.textStyle}>Enviar</Text>
                         </Pressable>
                     </View>
                 </View>
-            </modal>
+            </Modal>
             <Pressable
-                style={[styles.button, styles.buttonClose]}
+                style={[styles.button, styles.buttonOpen]}
                 onPress={() => setModalVisible(true)}>
-               <Text style={styles.textStyle}>Exibir Modal</Text>
-            </Pressable>   
+                <Text style={styles.textStyle}>Exibir Modal</Text>
+            </Pressable>
         </View>
-    )
-}
+    );
+};
+
 export default Cadastro;
