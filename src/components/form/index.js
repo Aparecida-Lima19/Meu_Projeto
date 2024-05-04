@@ -44,6 +44,7 @@ export default function Form() {
                     keyboardType="numeric"
                     secureTextEntry={true}
                 />
+                <Text style={styles.textEsqueceuSenha}>Esqueceu sua Senha?</Text>
 
                 <TouchableOpacity
                     style={styles.buttonClean}
@@ -51,6 +52,14 @@ export default function Form() {
                 >
                     <Text style={styles.textButtonClean}>{textButton}</Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.buttonCadastro}
+                    onPress={() => navigation.navigate("Cadastro")}
+                >
+                    <Text style={styles.textCadastro}>Ainda não sou cadastrado</Text>
+                </TouchableOpacity>
+
             </View>
         </View>
     )

@@ -34,11 +34,30 @@ const styles = StyleSheet.create({
         paddingTop:10,
         paddingBottom:10,
         marginLeft:12,
-        margin:30
+        marginTop:30
     },
     textButtonClean:{
         fontSize:22,
         color:"#FFFFFF"
+    },
+    textEsqueceuSenha: {
+        textAlign: "right",
+        paddingRight: 30,
+        fontSize: 17,
+        fontWeight: "bold"
+    },
+    textCadastro:{
+        fontSize:20,
+        fontWeight: "bold"
+    },
+    buttonCadastro:{
+        alignItems: "center",
+        justifyContent:"center",
+        width: "90%",
+        paddingTop:10,
+        paddingBottom:10,
+        marginLeft:12,
+        marginTop:30
     }
 });
 
